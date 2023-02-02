@@ -1,15 +1,30 @@
 function validate(){
-  const  valid= document.getElementById("cardnumber").value;
+  const  valid= document.getElementById ("cardnumber").value;
   console.log(valid);
 
   if(valid.length==0 || /^\s+$/.test(valid) || isNaN(valid)){
 alert("debes ser un numero!!")
   }
+  else if (valid.length > 16 ) {
+    alert("Es mayor a 16 digitos ")
+}
   else{
       var arr=valid.split('');
   if(typeof(parseInt(arr[0]))=='number'){
       console.log("datos validos ");
-      document.write('El numero de su tarjeta ingresada es: '+ valid);
+      asterisco=""
+      for(var i=1; i<arr.length; i++){
+        if (i<=4) {
+          asterisco=asterisco+arr[i]
+        
+        }
+          else{
+                  
+            asterisco="#"+asterisco
+          }
+        }
+console.log(asterisco);
+      document.write('La tarjeta ingresada con terminación' + asterisco + 'es' );
       
       
   
@@ -72,5 +87,6 @@ alert("debes ser un numero!!")
   
    document.write('<br> '+ isValidCard(valid));
    console.log(isValidCard(valid));
-}
+
+  }
 }
